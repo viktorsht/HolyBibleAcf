@@ -25,4 +25,5 @@ public class BooksModel {
     private String name;
     private String abbrev;
     private String testament;
+    private int chapters;
 }

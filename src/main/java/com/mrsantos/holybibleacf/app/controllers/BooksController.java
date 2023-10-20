@@ -2,6 +2,7 @@ package com.mrsantos.holybibleacf.app.controllers;
 
 import java.util.List;
 
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +20,7 @@ public class BooksController {
         this.booksService = booksService;
     }
 
-    @GetMapping
+    @GetMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public List<BooksModel> getAllBooks(){
         List<BooksModel> books = booksService.list();
         return books;
