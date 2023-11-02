@@ -18,4 +18,8 @@ public class BooksService {
     public List<BooksModel> list(){
         return booksRepository.findAll();
     }
+
+    public BooksModel listById(int id){
+        return booksRepository.findById(id+1); // os livros são listados de 0 a ... e os captulos são procurados por id (1, 2, ...) 
+    }
 }

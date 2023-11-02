@@ -2,8 +2,8 @@ package com.mrsantos.holybibleacf.app.controllers;
 
 import java.util.List;
 
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,10 +20,15 @@ public class BooksController {
         this.booksService = booksService;
     }
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @GetMapping()
     public List<BooksModel> getAllBooks(){
         List<BooksModel> books = booksService.list();
         return books;
+    }
+
+    @GetMapping("/{id}")
+    public BooksModel getBook(@PathVariable int id){
+        return booksService.listById(id);
     }
     
 }
