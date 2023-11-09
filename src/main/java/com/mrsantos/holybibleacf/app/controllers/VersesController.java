@@ -27,7 +27,7 @@ public class VersesController {
         this.booksService = booksService;
     }
 
-    @GetMapping("/{book}/{chapter}")
+    @GetMapping(value = "/{book}/{chapter}", produces = "application/json; charset=UTF-8")
     public ResponseEntity<ChaptersModel> getVersesByBookAndChapter(@PathVariable int book, @PathVariable int chapter) {
         BooksModel bookModel = booksService.listById(book);
         List<VersesModel> verses =  versesService.findByAbbreviationAndChapter(book, chapter);

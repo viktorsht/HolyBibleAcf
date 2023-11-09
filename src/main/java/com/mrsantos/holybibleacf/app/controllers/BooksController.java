@@ -20,7 +20,7 @@ public class BooksController {
         this.booksService = booksService;
     }
 
-    @GetMapping()
+    @GetMapping(produces = "application/json; charset=UTF-8")
     public List<BooksModel> getAllBooks(){
         List<BooksModel> books = booksService.list();
         return books;
