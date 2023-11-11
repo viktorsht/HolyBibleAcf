@@ -1,6 +1,5 @@
 package com.mrsantos.holybibleacf.app.controllers;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,8 +17,19 @@ public class AboutController {
         this.aboutService = aboutService;
     }
 
-    @GetMapping(/*produces = "application/json; charset=UTF-8"*/)
-    public ResponseEntity<AboutModel> getAbout(){
-        return aboutService.listAbout().map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    @GetMapping(produces = "application/json; charset=UTF-8")
+    public AboutModel getAbout(){
+        //return aboutService.listAbout().map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+        return aboutService.listAbout();
     }
+/* 
+    @GetMapping(produces = "application/json; charset=UTF-8")
+        public ResponseEntity<AboutModel> getAbout() {
+            Optional<AboutModel> aboutModelOptional = aboutService.listAbout();
+
+            return aboutModelOptional
+                    .map(ResponseEntity::ok)
+                    .orElse(ResponseEntity.ok().build());
+        }
+*/
 }

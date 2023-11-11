@@ -1,7 +1,5 @@
 package com.mrsantos.holybibleacf.app.service;
 
-import java.util.Optional;
-
 import org.springframework.stereotype.Service;
 
 import com.mrsantos.holybibleacf.app.models.AboutModel;
@@ -15,7 +13,7 @@ public class AboutService {
         this.aboutRepository = aboutRepository;
     }
 
-    public Optional<AboutModel> listAbout(){
+    public AboutModel listAbout(){
         return aboutRepository.findFirstByOrderByIdAsc();
     }
 }

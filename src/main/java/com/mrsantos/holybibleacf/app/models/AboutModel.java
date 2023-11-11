@@ -23,11 +23,11 @@ public class AboutModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-	private String project_name;
+	private String name;
     private String abbreviation;
-    private String app_version;
+    private String version;
     private String description;
-	private String bible_version;
-	private String social_media;
+	private String bible;
+	private String media;
     
 }
