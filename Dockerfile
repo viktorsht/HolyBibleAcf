@@ -1,8 +1,19 @@
-FROM openjdk:17-alpine
+# Stage 1: Build Stage
+FROM maven:3.8.4-openjdk-17-slim AS build
+
+COPY src /app/src
+COPY pom.xml /app
 
 WORKDIR /app
-COPY target/holy-bible-acf-0.0.1-SNAPSHOT.jar /app/holy-bible-acf-0.0.1-SNAPSHOT.jar
+
+RUN mvn clean install
+
+FROM openjdk:17-jdk-slim
+
+COPY --from=build /app/target/*.jar /app/app.jar
+
+WORKDIR /app
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "holy-bible-acf-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
