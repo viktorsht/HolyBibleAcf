@@ -1,0 +1,17 @@
+version: '3'
+services:
+  api:
+    image: holy-bible-api
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+  db:
+    image: mysql:8.3.0
+    environment:
+      MYSQL_USER: holy
+      MYSQL_ROOT_PASSWORD: 123
+      MYSQL_PASSWORD: 123
+      MYSQL_DATABASE: holy_bible
+    ports:
+      - "3306:3306"
